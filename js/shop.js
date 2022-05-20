@@ -149,7 +149,16 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
-    
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].quantity >= 3 && cart[i].id === 1) {
+            cart[i].price = 10; 
+            cart[i].subtotalWithDiscount = (cart[i].price) * (cart[i].quantity)
+        } else if (cart[i].quantity >= 10 && cart[i].id === 3) {
+            cart[i].price = 5 * (2  / 3); 
+        }
+    }
+
+    console.log(cart);
 }
 
 // Exercise 6

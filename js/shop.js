@@ -2,7 +2,7 @@
 var products = [
    {
         id: 1,
-        name: 'cooking oil',
+        name: 'Cooking oil',
         price: 10.5,
         type: 'grocery',
         offer: {
@@ -101,7 +101,11 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cartList.length = 0;
+    cartList = [];
+    cart = []; 
+    document.getElementById('cart_list').innerHTML = ''; 
+    total = 0;
+    document.getElementById('total_price').innerHTML = total.toFixed(2); 
     console.log(cartList); 
 
 }
@@ -120,6 +124,7 @@ function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
     //Button inside My Cart called Total Cart
+    cart = []; 
     let found; 
     for (let i = 0; i < cartList.length; i++) {
         found = -1; 
@@ -132,11 +137,12 @@ function generateCart() {
         if (found > -1) {
             cart[found].quantity++;
             cart[found].subtotal = (cart[found].price) * (cart[found].quantity); 
+            cart[found].subtotalWithDiscount = applyPromotionsCart(); 
         } else {
             const newItem = cartList[i]; 
             newItem.quantity = 1; 
             newItem.subtotal = newItem.price; 
-            newItem.subtotalWithDiscount = 0; 
+            newItem.subtotalWithDiscount = newItem.price; 
             cart.push(newItem); 
         }
     }
@@ -149,22 +155,84 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    let subtotalWithDiscount; 
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].quantity >= 3 && cart[i].id === 1) {
             cart[i].price = 10; 
-            cart[i].subtotalWithDiscount = (cart[i].price) * (cart[i].quantity)
+            cart[i].subtotalWithDiscount = (cart[i].price) * (cart[i].quantity); 
+            subtotalWithDiscount = (cart[i].price) * (cart[i].quantity); 
         } else if (cart[i].quantity >= 10 && cart[i].id === 3) {
             cart[i].price = 5 * (2  / 3); 
+            cart[i].subtotalWithDiscount = (cart[i].price) * (cart[i].quantity); 
+            subtotalWithDiscount = (cart[i].price) * (cart[i].quantity);
+        } else {
+            subtotalWithDiscount = cart[i].subtotal; 
         }
     }
-
-    console.log(cart);
+    return subtotalWithDiscount; 
 }
 
 // Exercise 6
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
+    // Fill the shopping cart modal manipulating the shopping cart dom 
+    let body = document.getElementById('cart_list');
+    body.innerHTML = ''; 
+    total = 0; 
+
+    for (let i = 0; i < cart.length; i++) {
+        let tr = document.createElement('tr'); 
+        let th = document.createElement('th');
+        th.innerHTML = cart[i].name; 
+        let td1 = document.createElement('td');
+        td1.innerHTML = '$' + cart[i].price.toFixed(2);
+        let td2 = document.createElement('td');
+        td2.innerHTML = cart[i].quantity;
+        let td3 = document.createElement('td');
+        td3.innerHTML = '$' + cart[i].subtotalWithDiscount.toFixed(2);
+
+        tr.appendChild(th);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        body.appendChild(tr); 
+
+        total += cart[i].subtotalWithDiscount; 
+
+    }
+
+    document.getElementById('total_price').innerHTML = total.toFixed(2); 
+
+
+
+
     
+    // const fragment = document.createDocumentFragment(); 
+    // //const fragment = new DocumentGragment(); 
+
+    // //utilizar fragment para evitar reflow
+    // cartList.forEach(item => {
+    //     const tr = document.createElement('tr');
+    //     tr.classList.add('table');
+    //     const tdName = document.createElement('td');
+    //     td.classList.add('list'); 
+    //     td.textContent = item.name;
+    //     fragment.appendChild(tr); 
+    //     fragment.appendChild(td); 
+    // })
+
+    // list.appendChild(fragment); 
+    
+    
+    // cartList.forEach(item => {
+    //     list.innerHTML += `<td>${item.name}</td>`
+    //     const tr = document.createElement('tr'); 
+    //     const td = document.createElement('td'); 
+    //     td.textContent = item.name; 
+    //     list.appendChild(tr);
+    //     list.appendChild(td); 
+
+    // }) 
+
 }
 
 

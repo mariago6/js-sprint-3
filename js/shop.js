@@ -71,14 +71,19 @@ var cart = [];
 
 var total = 0;
 
+let countProduct = 0; 
+
 // Exercise 1
 function buy(id) {
     for (let i = 0; i < products.length; i++) {
         if(products[i].id === id) {
-            cartList.push(products[i]);  
+            cartList.push(products[i]); 
+            countProduct++; 
+            document.getElementById('count_product').innerHTML = countProduct; 
             break;     
         }
     } 
+    
 
     console.log(cartList); 
 
@@ -201,6 +206,7 @@ function printCart() {
     }
 
     document.getElementById('total_price').innerHTML = total.toFixed(2); 
+ 
 
 
 

@@ -258,7 +258,23 @@ function addToCart(id) {
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array[]
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === id && cart[i].quantity > 1) {
+            cart[i].quantity--;
+            cart[i].subtotal = cart[i].quantity * cart[i].price; 
+            cart[i].subtotalWithDiscount = applyPromotionsCart(); 
+            countProduct--;
+            document.getElementById('count_product').innerHTML = countProduct;
+            break; 
+        } else if (cart[i].id === id && cart[i].quantity === 1){
+            cart.splice(i, 1); 
+            countProduct--;
+            document.getElementById('count_product').innerHTML = countProduct;
+            break;
+        }
+    }
 
+    console.log(cart); 
 }
 
 function open_modal(){

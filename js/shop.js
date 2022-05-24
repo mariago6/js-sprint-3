@@ -216,17 +216,49 @@ function printCart() {
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+
+    let product = ''; 
+    countProduct++;
+    document.getElementById('count_product').innerHTML = countProduct; 
+
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].id === id) {
+            product = products[i]; 
+            break; 
+        }
+    }
+    
+    let productIndex = -1; 
+
+    for (let j = 0; j < cart.length; j++) {
+        if (cart[j].id === product.id) {
+            productIndex = j; 
+            break; 
+        } 
+    }
+
+    if(productIndex === -1) {
+        product.quantity = 1;
+        product.subtotal= product.price; 
+        product.subtotalWithDiscount = product.price; 
+        cart.push(product); 
+    } else {
+        cart[productIndex].quantity++;
+        cart[productIndex].subtotal = (cart[productIndex].price) * (cart[productIndex].quantity); 
+        cart[productIndex].subtotalWithDiscount = applyPromotionsCart(); 
+    }
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+    // 2. Add found product to the cartList array[]
+
 }
 
 function open_modal(){

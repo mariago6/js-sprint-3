@@ -71,7 +71,9 @@ var cart = [];
 
 var total = 0;
 
+//let for counter number
 let countProduct = 0; 
+document.getElementById('count_product').innerHTML = countProduct;
 
 // Exercise 1
 function buy(id) {
@@ -106,13 +108,15 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
+    //Clean arrays cartList & cart, total of $ and counter
     cartList = [];
     cart = []; 
     document.getElementById('cart_list').innerHTML = ''; 
     total = 0;
     document.getElementById('total_price').innerHTML = total.toFixed(2); 
+    countProduct = 0; 
+    document.getElementById('count_product').innerHTML = countProduct;
     console.log(cartList); 
-
 }
 
 // Exercise 3
@@ -206,38 +210,6 @@ function printCart() {
     }
 
     document.getElementById('total_price').innerHTML = total.toFixed(2); 
- 
-
-
-
-
-    
-    // const fragment = document.createDocumentFragment(); 
-    // //const fragment = new DocumentGragment(); 
-
-    // //utilizar fragment para evitar reflow
-    // cartList.forEach(item => {
-    //     const tr = document.createElement('tr');
-    //     tr.classList.add('table');
-    //     const tdName = document.createElement('td');
-    //     td.classList.add('list'); 
-    //     td.textContent = item.name;
-    //     fragment.appendChild(tr); 
-    //     fragment.appendChild(td); 
-    // })
-
-    // list.appendChild(fragment); 
-    
-    
-    // cartList.forEach(item => {
-    //     list.innerHTML += `<td>${item.name}</td>`
-    //     const tr = document.createElement('tr'); 
-    //     const td = document.createElement('td'); 
-    //     td.textContent = item.name; 
-    //     list.appendChild(tr);
-    //     list.appendChild(td); 
-
-    // }) 
 
 }
 

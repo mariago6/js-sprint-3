@@ -225,6 +225,9 @@ function addToCart(id) {
     let product = ''; 
     countProduct++;
     document.getElementById('count_product').innerHTML = countProduct; 
+    document.getElementById(`buttonsuma${id}`).style.visibility = 'visible'; 
+    document.getElementById(`buttonresta${id}`).style.visibility = 'visible'; 
+    document.getElementById(`contador${id}`).style.visibility = 'visible'; 
 
     for (let i = 0; i < products.length; i++) {
         if (products[i].id === id) {
@@ -251,8 +254,11 @@ function addToCart(id) {
         cart[productIndex].quantity++;
         cart[productIndex].subtotal = (cart[productIndex].price) * (cart[productIndex].quantity); 
         cart[productIndex].subtotalWithDiscount = applyPromotionsCart(); 
+        document.getElementById(`contador${id}`).value = cart[productIndex].quantity; 
     }
-}
+
+    
+}    
 
 // Exercise 9
 function removeFromCart(id) {
@@ -265,11 +271,15 @@ function removeFromCart(id) {
             cart[i].subtotalWithDiscount = applyPromotionsCart(); 
             countProduct--;
             document.getElementById('count_product').innerHTML = countProduct;
+            document.getElementById(`contador${id}`).value = cart[i].quantity;
             break; 
         } else if (cart[i].id === id && cart[i].quantity === 1){
             cart.splice(i, 1); 
             countProduct--;
             document.getElementById('count_product').innerHTML = countProduct;
+            document.getElementById(`buttonsuma${id}`).style.visibility = 'hidden'; 
+            document.getElementById(`buttonresta${id}`).style.visibility = 'hidden'; 
+            document.getElementById(`contador${id}`).style.visibility = 'hidden'; 
             break;
         }
     }

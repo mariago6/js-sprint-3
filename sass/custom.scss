@@ -1,0 +1,185 @@
+$primary:#646FD4;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+.navbar {
+  background-color: $primary; 
+}
+
+.navbar-brand {
+  color: white; 
+}
+
+.nav-link {
+  color: white;
+}
+
+.navbar-collapse img {
+  width: 7%;
+  height: 7%;
+}
+
+h2 {
+  background-color: $primary;
+  height: 80px;
+  color: white; 
+}
+
+h6 {
+  margin-left: 10px;
+}
+
+.badge {
+  background-color: $primary;
+  
+}
+
+#grocery img {
+  width: 100%;
+  height: 300px;
+}
+
+#beauty img {
+  width: 100%;
+  height: 300px;
+}
+
+#clothes img {
+  width: 100%;
+  height: 300px;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 500px;
+}
+
+.carousel-caption {
+  position: absolute; 
+  right: 50%;
+  top: 125px; 
+  left: 10%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.card-text {
+  font-family: "Century Gothic"; 
+  font-size: x-large;
+  padding-left: 10px;
+}
+.button {
+  background-color: $primary;
+  color: white;
+  border: none;
+  padding: 3px 9px;
+}
+
+.box {
+  border-color: $primary;
+}
+
+.btn {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background-color: $primary;
+  color: white;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  line-height: .95;
+  border: none;
+  outline-color: white;
+  border: 1px solid $primary;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.btn1 {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background-color: white;
+  color: $primary;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  line-height: .95;
+  border: none;
+  outline-color: $primary;
+  border: 1px solid $primary;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.btn-outline-light:hover {
+  color: $primary;
+  border-color: $primary; 
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  border-color: $primary; 
+}
+
+#count_product {
+  color: $primary;
+}
+
+.card {
+  border-color: rgba(135, 92, 243, 0.445); 
+}
+
+footer {
+  background-color: $primary;
+}
+
+footer img {
+  width: 5%;
+  height: 5%;
+}
+
+.modal-header img {
+  width: 7%;
+  height: 7%;
+  margin-right: 10px;
+}
+
+.bill {
+  background-color: $primary;
+  color:white; 
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+td {
+  font-family: "Century Gothic"; 
+}
+
+.fs {
+  font-family: "Century Gothic"; 
+}
+
+#total_price {
+  font-family: "Century Gothic"; 
+}
+
+.bord {
+  background-color: $primary;
+  color: white; 
+}
+
+
+
+
